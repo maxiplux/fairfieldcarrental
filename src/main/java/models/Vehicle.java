@@ -17,7 +17,17 @@ public class Vehicle implements Serializable {
     private String name;
     private String image;
 
+    private String mak;
+
+    private String model;
+    private String color;
+    private String type;
+    private String year;
+    private String size;
+
     private float price; // Price by date not hours
+
+
 
     public Vehicle(String name, String image, float price) {
         this.name = name;
@@ -26,6 +36,54 @@ public class Vehicle implements Serializable {
     }
 
     public Vehicle() {
+    }
+
+    public String getMak() {
+        return mak;
+    }
+
+    public void setMak(String mak) {
+        this.mak = mak;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public Long getId() {

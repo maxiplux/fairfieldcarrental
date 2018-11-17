@@ -25,4 +25,15 @@
 
 
 
+    <servlet>
+        <servlet-name>Vehicles</servlet-name>
+        <servlet-class>controllers.backend.vehicles.Vehicles</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Vehicles</servlet-name>
+        <url-pattern>/Vehicles</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

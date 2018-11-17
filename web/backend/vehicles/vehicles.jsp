@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
 
@@ -36,7 +37,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="vehicles" href="#">Vehicles</a>
+                        <a class="nav-link" id="vehicles" href="#">Vehicles
+
+                            <p>The data from servlet: ${data}</p>
+
+                        </a>
                     </li>
 
                     <li class="nav-item">
