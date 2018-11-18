@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>My MUM Rentals</title>
@@ -36,20 +38,26 @@
 </div>
 
 <section class="card-container">
-    <article class="card">
-        <header class="card__title">
-            <h3>Rent a Car</h3>
-        </header>
-        <figure class="card__thumbnail">
-            <img src="https://www.enterprise.com/content/dam/ecom/utilitarian/common/Meet%20the%20Fleet/luxury_cadi-xts.png.wrend.1280.720.png">
-        </figure>
-        <main class="card__description">
-            Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun Lorem Ipsum dolor amet sun
-        </main>
-        <a href="#" class="button">Book</a>
+    <c:forEach items="${vehicles}" var="vehicle">
+        <article class="card">
+            <header class="card__title">
+                <h3>Rent a Car</h3>
+            </header>
+            <figure class="card__thumbnail">
+                <img src="${vehicle.image}">
+            </figure>
+            <main class="card__description">
+                Name: ${vehicle.name} <br/>
+                Make: ${vehicle.mak} <br/>
+                Model: ${vehicle.model} <br/>
+                Price: ${vehicle.price} <br/>
+            </main>
+            <a href="#" class="button">Book</a>
 
-    </article>
-    <article class="card">
+        </article>
+    </c:forEach>
+
+    <%--<article class="card">
         <header class="card__title">
             <h3>Rent a Car</h3>
         </header>
@@ -165,7 +173,7 @@
         </main>
         <a href="#" class="button">Book</a>
 
-    </article>
+    </article>--%>
 </section>
 </body>
 </html>
