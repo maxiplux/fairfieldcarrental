@@ -45,28 +45,27 @@
 </div>
 
 <section class="card-container">
-    <c:forEach items="${vehicles}" var="vehicle">
-        <form action="/rentals" method="post">
-            <input name="id" type="hidden" value="${vehicle.id}">
-            <article class="card">
-                <header class="card__title">
-                    <h3>Rent a Car</h3>
-                </header>
-                <figure class="card__thumbnail">
-                    <img src="${vehicle.image}">
-                </figure>
-                <main class="card__description">
-                    Name: ${vehicle.name} <br/>
-                    Make: ${vehicle.mak} <br/>
-                    Model: ${vehicle.model} <br/>
-                    Price: ${vehicle.price} <br/>
-                </main>
-                <!--a href="#" class="button">Book</a/-->
-                <input type="submit" class="button" value="Book">
-            </article>
-        </form>
 
-    </c:forEach>
+    <form action="/rentals" method="post">
+        <input name="id" type="hidden" value="${vehicle.id}">
+        <input name="option" type="hidden" value="confirm">
+        <article class="card">
+            <header class="card__title">
+                <h3>Rent a Car</h3>
+            </header>
+            <figure class="card__thumbnail">
+                <img src="${vehicle.image}">
+            </figure>
+            <main class="card__description">
+                Name: ${vehicle.name} <br/>
+                Make: ${vehicle.mak} <br/>
+                Model: ${vehicle.model} <br/>
+                Price: ${vehicle.price} <br/>
+            </main>
+            Confirm Rent<br/>
+            <input type="submit" class="button" value="Pay">
+        </article>
+    </form>
 </section>
 </body>
 </html>
