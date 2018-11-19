@@ -96,6 +96,9 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
+    public String getInfo() {
+        return String.format("%s %s / %s", this.firstName,this.lastName , this.email);
+    }
 
     public void setPassword(String password) {
         this.password = password;

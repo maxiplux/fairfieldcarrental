@@ -13,7 +13,7 @@ import java.util.List;
 public class VehicleService {
 
 
-    public boolean create(Vehicle user) {
+    public Vehicle create(Vehicle vehicle) {
         Session session = HibernateUtil.openSession();
 
 
@@ -21,10 +21,10 @@ public class VehicleService {
         try {
             tx = session.getTransaction();
             tx.begin();
-            session.saveOrUpdate(user);
+            session.saveOrUpdate(vehicle);
             tx.commit();
 
-            System.out.printf("<<<<# 33 -------> %s >>>>", user.toString());
+            System.out.printf("<<<<# 33 -------> %s >>>>", vehicle.toString());
         } catch (Exception e) {
 
 
@@ -34,10 +34,10 @@ public class VehicleService {
             e.printStackTrace();
 
             System.out.printf("<<<<# 44 %s >>>>", e.toString());
-            return false;
+            return vehicle;
         }
 
-        return true;
+        return vehicle;
     }
 
 

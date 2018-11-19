@@ -1,8 +1,6 @@
-package controllers.backend.vehicles;
+package controllers.backend.operations;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import models.Vehicle;
+import service.OperationService;
 import service.VehicleService;
 
 import javax.servlet.ServletException;
@@ -11,24 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-
-@WebServlet(name = "Vehicles")
-public class Vehicles extends HttpServlet {
+@WebServlet(name = "/Report")
+public class Report extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        VehicleService vehicleService = new VehicleService();
-        request.setAttribute("vehicles", vehicleService.getListOfVehicles());
-        request.getRequestDispatcher("/backend/vehicles/index.jsp").forward(request, response);
-
+        OperationService operationService = new OperationService();
+        request.setAttribute("operations", operationService.getListOfOperations());
+        request.getRequestDispatcher("/backend/operations/index.jsp").forward(request, response);
 
     }
 }

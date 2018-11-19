@@ -30,7 +30,7 @@ public class ServletExample extends HttpServlet {
 
         VehicleService  vehicleService = new VehicleService();
         Vehicle vh= new Vehicle("Mazda","GT",100);
-        Boolean status_vehicle=vehicleService.create(vh);
+          vh=vehicleService.create(vh);
 
 
         for (Vehicle vehicle : vehicleService.getListOfVehicles()) {
@@ -43,7 +43,7 @@ public class ServletExample extends HttpServlet {
 
 
 
-        out.printf("Status about Vehicles %s %s" , status_vehicle,vh);
+        out.printf("Status about Vehicles %s %s" , vh.toString(),vh);
 
 
         for (int i = 0; i < 10; i++) {

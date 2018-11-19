@@ -25,6 +25,17 @@
 
 
 
+
+    <servlet>
+        <servlet-name>JsonVehicles</servlet-name>
+        <servlet-class>controllers.backend.vehicles.JsonVehicles</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JsonVehicles</servlet-name>
+        <url-pattern>/JsonVehicles</url-pattern>
+    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>Vehicles</servlet-name>
         <servlet-class>controllers.backend.vehicles.Vehicles</servlet-class>
@@ -34,6 +45,15 @@
         <url-pattern>/Vehicles</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>Report</servlet-name>
+        <servlet-class>controllers.backend.operations.Report</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Report</servlet-name>
+        <url-pattern>/Report</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

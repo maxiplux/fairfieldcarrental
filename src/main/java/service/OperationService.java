@@ -69,7 +69,7 @@ public class OperationService {
         try {
             tx = session.getTransaction();
             tx.begin();
-            list = session.createQuery("from Operation ").list();
+            list = session.createQuery("from Operation").list();
 
             System.out.printf("<<<<@@@@ %s >>>>", list.toString());
             tx.commit();
