@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -41,32 +42,41 @@ public class Operations extends HttpServlet {
         req.setAttribute("vehicle", vehicle);
 
         if ("rent".equals(option)) {
-            User user = loginServce.getUserById(1);
+
+            HttpSession session=req.getSession();
+            User user= (User) session.getAttribute("user");
+
+
             String startdate = req.getParameter("startdate");
             String enddate = req.getParameter("enddate");
-            Operation operation = new Operation();
-            operation.setId(1L);
-            operation.setPrice(vehicle.getPrice());
 
-            SimpleDateFormat fmt = new SimpleDateFormat("MM/dd/yyyy");
 
-            try{
-                java.util.Date startdateDate = fmt.parse(startdate);
-                java.util.Date enddateDate = fmt.parse(enddate);
-                operation.setDate_start(startdateDate);
-                operation.setDate_end(enddateDate);
-            }
-            catch (Exception e){
 
-            }
 
-            operation.setUser(user);
-            operation.setVehicle(vehicle);
+
+
+
+            Operation operation = new Operation(user, vehicle,  startdate, enddate);
+
             operationService.create(operation);
-            req.getRequestDispatcher("/frontend/operation.jsp").forward(req, resp);
-        } else if ("confirm".equals(option)) {
             req.getRequestDispatcher("/frontend/confirm.jsp").forward(req, resp);
-        } else {
+        }
+
+        else if ("confirm".equals(option))
+        {
+            req.getRequestDispatcher("/frontend/payment.jsp").forward(req, resp);
+        }
+
+        else if ("payment".equals(option))
+        {
+            resp.sendRedirect("/rentals");
+        }
+
+
+
+        else {
+            //resp.sendRedirect("/rentals");
+
             req.getRequestDispatcher("/frontend/operation.jsp").forward(req, resp);
         }
 

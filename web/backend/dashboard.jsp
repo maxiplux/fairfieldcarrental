@@ -30,26 +30,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Dashboard Report
-                            <span class="sr-only">(current)</span>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="vehicles" href="/Vehicles">Vehicles
+
+
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" id="vehicles" href="#">Vehicles</a>
+                        <a class="nav-link" id="users" href="/listUsersController">Users</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" id="users" href="#">Users</a>
+                        <a class="nav-link" id="operations" href="/Report">Operations</a>
                     </li>
 
                     <li class="nav-item">
-                            <a class="nav-link" id="operations" href="#">Operations</a>
-                        </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Log out</a>
-                    </li> 
+                        <a class="nav-link disabled" href="/Logout">Log out</a>
+                    </li>
+                    
                 </ul>
 
             </div>

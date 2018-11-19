@@ -17,16 +17,16 @@
   </head>
 <div class="center">
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" action="/loginController" method="get">
       <img class="mb-4" src="/backend/car-rental-logo.png" alt="" width="200" height="200">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" name="remember" value="remember-me"> Remember me
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

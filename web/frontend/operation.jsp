@@ -53,8 +53,8 @@
                     Make: ${vehicle.mak} <br/>
                     Model: ${vehicle.model} <br/>
                     Price: ${vehicle.price} <br/>
-                    Start Date: <input name="startdate" type="text"/><br/>
-                    End Date: <input name="endtdate" type="text"/><br/>
+                    Start Date: <input name="startdate" type="date"/><br/>
+                    End Date: <input name="enddate" type="date"/><br/>
                 </main>
                 <input type="submit" class="button" value="Accept">
             </article>

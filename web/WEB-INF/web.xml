@@ -47,6 +47,28 @@
 
 
     <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controllers.backend.users.LoginController</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controllers.backend.users.LogoutController</servlet-class>
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>ListUsersController</servlet-name>
+        <servlet-class>controllers.backend.users.ListUsersController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewUserController</servlet-name>
+        <servlet-class>controllers.backend.users.NewUserController</servlet-class>
+    </servlet>
+
+
+
+    <servlet>
         <servlet-name>Report</servlet-name>
         <servlet-class>controllers.backend.operations.Report</servlet-class>
     </servlet>
@@ -54,6 +76,35 @@
         <servlet-name>Report</servlet-name>
         <url-pattern>/Report</url-pattern>
     </servlet-mapping>
+
+
+
+
+
+
+
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/loginController</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet-mapping>
+        <servlet-name>ListUsersController</servlet-name>
+        <url-pattern>/listUsersController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewUserController</servlet-name>
+        <url-pattern>/newUserController</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>

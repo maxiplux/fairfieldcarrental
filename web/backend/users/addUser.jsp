@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -15,8 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-
+    <title>Add User</title>
 
 </head>
 
@@ -33,8 +33,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <%@include  file="/backend/menu.jsp" %>
 
+                <%@include  file="/backend/menu.jsp" %>
             </ul>
 
         </div>
@@ -51,51 +51,35 @@
 
         <div class="col-12" id="dataset">
 
-            <h2>Reports about operations</h2>
-            <table class="table table-dark" id="tbt_ajax">
-
-
-                <thead>
-                <tr>
-
-                    <th scope="col">Vehicle</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">start</th>
-                    <th scope="col">end</th>
-
-
-                </tr>
-                </thead>
-                <tbody>
-
-                <c:forEach items="${operations}" var="operation">
-                    <tr id="row_id${operation.id}">
 
 
 
-
-                        <td scope="row"> ${operation.vehicle.name}</td>
-                        <td scope="row"> ${operation.user.firstName} ${operation.user.lastName} ${operation.user.email} </td>
-
-
-                        <td scope="row"> ${operation.price}</td>
-                        <td scope="row"> ${operation.date_start}</td>
-                        <td scope="row"> ${operation.date_end}</td>
-
-
-
-
-
-                    </tr>
-                </c:forEach>
-
-
-                </tbody>
-            </table>
-
+            <form class="form-signin" action="/newUserController" method="post" id="newuser">
+                <%--<img class="mb-4" src="/backend/car-rental-logo.png" alt="" width="200" height="200">--%>
+                <h1 class="h3 mb-3 font-weight-normal">Create Customer</h1>
+                <label for="firstname" class="sr-only">First Name</label>
+                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="first name" required>
+                <label for="middlename" class="sr-only">First Name</label>
+                <input type="text" name="middlename" id="middlename" class="form-control" placeholder="middle name" required>
+                <label for="lastname" class="sr-only">First Name</label>
+                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="last name" required>
+                <label for="email" class="sr-only">Email address</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                <%--<div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="remember" value="remember-me"> Remember me
+                    </label>
+                </div>--%>
+                <br /> <br />
+                <button class="btn btn-lg btn-primary btn-block" type="submit" id="createUser">Create</button>
+        </div>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        </form>
 
         </div>
+    </div>
 
 
 </main>
@@ -113,3 +97,4 @@
 </body>
 
 </html>
+

@@ -41,13 +41,13 @@ public class Operation implements Serializable {
         this.vehicle = vehicle;
 
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
             this.date_start = formatter.parse(date_start);
             this.date_end = formatter.parse(date_end);
 
-            long diff = this.date_start.getTime() - this.date_end.getTime();
+            long diff = this.date_end.getTime() - this.date_start.getTime() ;
 
             this.price = vehicle.getPrice()  *TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);;
         }

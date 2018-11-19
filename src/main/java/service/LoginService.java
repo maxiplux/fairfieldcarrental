@@ -18,13 +18,14 @@ public class LoginService {
     }
 
     public User getUserByEmail(String email) {
+        email=email.toLowerCase();
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
         User user = null;
         try {
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from User where email=" + email + "");
+            Query query = session.createQuery( String.format(" from User where email=  '%s'",email));
             user = (User) query.uniqueResult();
             tx.commit();
         } catch (Exception e) {

@@ -215,29 +215,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Dashboard Report
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="vehicles" href="#">Vehicles
-
-
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" id="users" href="#">Users</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" id="operations" href="#">Operations</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Log out</a>
-                </li>
+                <%@include  file="/backend/menu.jsp" %>
             </ul>
 
         </div>
