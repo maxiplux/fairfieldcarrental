@@ -48,16 +48,18 @@
     <c:forEach items="${vehicles}" var="vehicle">
         <form action="/rentals" method="post">
             <input name="id" type="hidden" value="${vehicle.id}">
-            <article class="card">
+            <article class="card"    >
                 <header class="card__title">
                     <h3>Rent a Car</h3>
                 </header>
                 <figure class="card__thumbnail">
-                    <img src="images/${vehicle.image}.jpg" width="150" align="center" height="50">
+                    <img style="border: 3px solid ${vehicle.color}" src="images/${vehicle.image}.jpg" width="150" align="center" height="50">
                 </figure>
                 <main class="card__description">
                     Name: ${vehicle.name} <br/>
+
                     Make: ${vehicle.mak} <br/>
+                    Color: ${vehicle.mak} <br/>
                     Model: ${vehicle.model} <br/>
                     Price: ${vehicle.price} <br/>
                 </main>

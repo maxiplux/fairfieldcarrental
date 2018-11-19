@@ -16,188 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-    <script type="application/javascript">
 
-        String.prototype.compose = (function () {
-            var re = /\{{(.+?)\}}/g;
-            return function (o) {
-                return this.replace(re, function (_, k) {
-                    return typeof o[k] != 'undefined' ? o[k] : '';
-                });
-            }
-        }());
-
-        (function ($) {
-            $.fn.serializeFormJSON = function () {
-
-                var o = {};
-                var a = this.serializeArray();
-                $.each(a, function () {
-                    if (o[this.name]) {
-                        if (!o[this.name].push) {
-                            o[this.name] = [o[this.name]];
-                        }
-                        o[this.name].push(this.value || '');
-                    } else {
-                        o[this.name] = this.value || '';
-                    }
-                });
-                delete o.save;
-                delete o.clear;
-
-                return o;
-            };
-        })(jQuery);
-
-        $(document).ready(function () {
-            const context = {};
-
-            // read json
-
-            context.udpdatetable = function (data) {
-                console.log(JSON.stringify(data));
-
-            }
-            context.edit = function (trigger, data = {}) {
-
-                let id = $(trigger).attr("id").replace("btn_id", "");
-                let new_object = {};
-                //$("#dataset").hide("slow");
-                $.get('/JsonVehicles', {vehicle: JSON.stringify({id: id})}, function (data) {
-
-                    let form = $("#form");
-                    $.each(data, function (key, value) {
-                        form.find("input[name='" + key + "']").val(value);
-                    });
-                    //  $("#dataset").show("slow");
-
-
-                }, "json");
-
-                //let form=context.getData();
-                //form.id=id;
-                //$.post('/JsonVehicles',{vehicle: JSON.stringify( form )}, context.udpdatetable    , "json");
-
-            }
-            context.reset = function () {
-                $('input').each(function () {
-                    $(this).val('');
-                });
-            }
-
-            context.save = function (trigger) {
-
-
-                let form = context.getData();
-
-
-
-                $.post('/JsonVehicles', {vehicle: JSON.stringify(form)}, function (data) {
-
-
-                    if (form.id != "") {
-
-                        var tr = $("#row_id"+form.id);
-                        console.log("#row_id"+form.id);
-
-
-                        var row = '' +
-                            ' <td  scope="row"><button type=button class="btn btn-info mb-2 edit" id=btn_id{{id}} >Edit </button></td>' +
-
-                            '   <td scope="row" >{{name}}</td> </th>' +
-                            ' <td scope="row">{{image}}</td>' +
-                            ' <td scope="row">{{model}}</td>' +
-                            ' <td scope="row">{{color}}</td>' +
-                            ' <td scope="row"> {{type}}</td>' +
-                            ' <td scope="row">{{year}}</td>' +
-                            ' <td scope="row">{{size}}</td>' +
-                            ' <td scope="row">{{price}}</td>' +
-                            ' ';
-                        tr.html("");
-
-                        tr.append( row.compose(data));
-
-                        console.log(tr.html());
-
-                        context.reset();
-
-
-                    }
-                    else {
-                        var tbody = $('#tbt_ajax').children('tbody');
-                        var table = tbody.length ? tbody : $('#tbt_ajax');
-
-
-                        var row = '<tr id="row_id{{id}}"> ' +
-                            ' <td  scope="row"><button type=button class="btn btn-info mb-2 edit" id=btn_id{{id}}>Edit </button></td>' +
-
-                            '   <td scope="row" >{{name}}</td> </th>' +
-                            ' <td scope="row">{{image}}</td>' +
-                            ' <td scope="row">{{model}}</td>' +
-                            ' <td scope="row">{{color}}</td>' +
-                            ' <td scope="row"> {{type}}</td>' +
-                            ' <td scope="row">{{year}}</td>' +
-                            ' <td scope="row">{{size}}</td>' +
-                            ' <td scope="row">{{price}}</td>' +
-                            ' </tr>';
-                        table.append(row.compose(data));
-
-
-                        context.reset();
-                        $('#tbt_ajax').show("fast");
-
-
-                    }
-
-
-                }, "json");
-
-            }
-
-
-            context.getData = function () {
-
-
-                return $("#form").serializeFormJSON();
-            }
-
-
-            $('.edit').click(function () {
-
-
-                context.edit(this);
-
-
-            });
-
-
-            $('#save').click(function () {
-
-
-                context.save(this);
-
-
-            });
-
-
-            $('#new').click(function () {
-                context.edit(this);
-            });
-
-            $('#clear').click(function () {
-
-
-                $('input').each(function () {
-                    $(this).val('');
-                });
-
-
-            });
-
-
-        });
-
-    </script>
 
 
 </head>
@@ -248,7 +67,14 @@
 
                 <div class="form-group">
                     <label for="image">Image Id</label>
-                    <input type="text" class="form-control" id="image" name="image" placeholder="Image Id ">
+
+
+                    <div class="slidecontainer">
+                        <input type="range" min="110" max="157" class="slider form-control"  value="110"  id="image" name="image" placeholder="Image Id ">
+                        <p>Image #: <span id="demo"></span></p>
+                    </div>
+
+
                 </div>
 
                 <div class="form-group">
@@ -264,7 +90,7 @@
 
                 <div class="form-group">
                     <label for="Color">Color</label>
-                    <input type="text" class="form-control" id="color" name="color" placeholder="color ">
+                    <input type="color" class="form-control" id="color" name="color" placeholder="color ">
                 </div>
 
 
@@ -275,7 +101,7 @@
 
                 <div class="form-group">
                     <label for="year">year</label>
-                    <input type="number" class="form-control" id="year" name="year" placeholder="year ">
+                    <input type="number"   class="form-control" id="year" name="year" placeholder="year ">
                 </div>
 
 
@@ -379,6 +205,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+
+<script type="application/javascript" src="/backend/vehicles/app.js"></script>
+
 
 </body>
 
