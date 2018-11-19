@@ -53,7 +53,7 @@
                     <h3>Rent a Car</h3>
                 </header>
                 <figure class="card__thumbnail">
-                    <img src="${vehicle.image}">
+                    <img src="images/${vehicle.image}.jpg" width="150" align="center" height="50">
                 </figure>
                 <main class="card__description">
                     Name: ${vehicle.name} <br/>

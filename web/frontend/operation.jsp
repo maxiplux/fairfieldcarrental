@@ -46,15 +46,15 @@
                     <h3>Rent a Car</h3>
                 </header>
                 <figure class="card__thumbnail">
-                    <img src="${vehicle.image}">
+                    <img src="images/${vehicle.image}.jpg" width="150" align="center" height="50">
                 </figure>
                 <main class="card__description">
                     Name: ${vehicle.name} <br/>
                     Make: ${vehicle.mak} <br/>
                     Model: ${vehicle.model} <br/>
                     Price: ${vehicle.price} <br/>
-                    Start Date: <input name="startdate" type="date"/><br/>
-                    End Date: <input name="enddate" type="date"/><br/>
+                    Start Date: <input name="startdate"  required  type="date "/><br/>
+                    End Date: <input name="enddate" required  type="date"/><br/>
                 </main>
                 <input type="submit" class="button" value="Accept">
             </article>

@@ -61,10 +61,7 @@
         <servlet-name>ListUsersController</servlet-name>
         <servlet-class>controllers.backend.users.ListUsersController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>NewUserController</servlet-name>
-        <servlet-class>controllers.backend.users.NewUserController</servlet-class>
-    </servlet>
+
 
 
 
@@ -100,10 +97,18 @@
         <servlet-name>ListUsersController</servlet-name>
         <url-pattern>/listUsersController</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewUserController</servlet-name>
-        <url-pattern>/newUserController</url-pattern>
-    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>RequestLogFilter</filter-name>
+        <filter-class>controllers.filters.RequestLogFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RequestLogFilter</filter-name>
+
+        <url-pattern>/*</url-pattern>
+
+    </filter-mapping>
 
 
 

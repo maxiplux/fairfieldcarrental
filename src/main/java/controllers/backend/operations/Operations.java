@@ -18,7 +18,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-@WebServlet("/rentals")
+@WebServlet({"/rentals","/rentals-create/","/rentals-pay/"})
 public class Operations extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -69,7 +69,7 @@ public class Operations extends HttpServlet {
 
         else if ("payment".equals(option))
         {
-            resp.sendRedirect("/rentals");
+            resp.sendRedirect("/rentals-pay/");
         }
 
 

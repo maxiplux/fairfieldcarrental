@@ -14,6 +14,10 @@ public class LoginService {
 
     public boolean authenticateUser(String email, String password) {
         User user = getUserByEmail(email);
+        if (user==null)
+        {
+            return false;
+        }
         return  user.getPassword().equals(password);
     }
 
@@ -26,6 +30,9 @@ public class LoginService {
             tx = session.getTransaction();
             tx.begin();
             Query query = session.createQuery( String.format(" from User where email=  '%s'",email));
+
+            query.setMaxResults(1);
+
             user = (User) query.uniqueResult();
             tx.commit();
         } catch (Exception e) {
