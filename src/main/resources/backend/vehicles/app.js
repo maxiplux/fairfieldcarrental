@@ -202,5 +202,16 @@ $(document).ready(function () {
 
     });
 
+    $( ".loading" ).hide();
+
+    $( document ).ajaxStart(function() {
+        $( ".loading" ).show();
+    });
+
+
+    $( document ).ajaxStop(function() {
+        $( ".loading" ).delay(1000).hide();
+    });
+
 
 });

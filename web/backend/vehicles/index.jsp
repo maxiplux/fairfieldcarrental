@@ -51,6 +51,8 @@
         <div class="col-3">
 
 
+
+
             <form id="form">
 
                 <caption>Vehicle Form</caption>
@@ -123,6 +125,10 @@
 
         </div>
         <div class="col-9" id="dataset">
+            <div class="loading">
+                <img src="/images/ajax-loading.gif" title="Loading " >
+                <strong>Loading Information , Please wait </strong>
+            </div>
 
             <h2>Vehicles</h2>
             <table class="table table-dark" id="tbt_ajax">
@@ -190,6 +196,10 @@
                 </tbody>
             </table>
 
+            <div class="loading">
+                <img src="/images/ajax-loading.gif" title="Loading " >
+                <strong>Loading Information , Please wait </strong>
+            </div>
 
         </div>
 

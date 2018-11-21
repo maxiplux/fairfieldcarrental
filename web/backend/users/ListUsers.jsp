@@ -49,43 +49,15 @@
     <div class="row">
 
 
-        <div class="col-12" id="dataset">
+        <div class="col-12" >
 
-            <h2>Users</h2>
+            <div id="loading">
+            <img src="/images/ajax-loading.gif" title="Loading " >
+                <strong>Loading Information , Please wait </strong>
+            </div>
 
-            <a class="btn btn-primary" href="/backend/users/addUser.jsp" role="button">New User</a>
+            <div  id="dataset"></div>
 
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Middle Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Operation</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <c:forEach items="${users}" var="user">
-                <tr>
-
-                    <td>${user.id}</td>
-                    <td>${user.firstName}</td>
-                    <td>${user.middleName}</td>
-                    <td>${user.lastName}</td>
-                    <td>${user.email}</td>
-
-                    <td><a  class="btn btn-primary"  href="/EditUserController?id=${user.id}">Edit</a></td>
-
-                </tr>
-                </c:forEach>
-
-                </tr>
-
-                </tbody>
-            </table>
 
 
         </div>
@@ -105,5 +77,32 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 </body>
+
+
+<script >
+
+
+
+    // A $( document ).ready() block.
+    $( document ).ready(function() {
+       $("#dataset").load("/JsonUsers");
+
+        $( "#loading" ).hide();
+
+
+        $( document ).ajaxStart(function() {
+            $( "#loading" ).show();
+        });
+
+
+        $( document ).ajaxStop(function() {
+            $( "#loading" ).hide("slow");
+        });
+
+
+    });
+
+</script>
+
 
 </html>
