@@ -42,7 +42,7 @@
         <input name="id" type="hidden" value="${vehicle.id}">
         <input name="option" type="hidden" value="payment">
             <h1>Succesfull </h1>
-            <input type="submit" class="button" value="Pay">
+            <input type="submit" class="button" value="Back">
         </article>
     </form>
 </section>

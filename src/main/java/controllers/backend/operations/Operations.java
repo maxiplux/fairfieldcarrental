@@ -18,67 +18,44 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-@WebServlet({"/rentals","/rentals-create/","/rentals-pay/"})
+@WebServlet({"/rentals", "/rentals-create/", "/rentals-pay/"})
 public class Operations extends HttpServlet {
+    private final VehicleService vehicleService = new VehicleService();
+    private final OperationService operationService = new OperationService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        VehicleService vehicleService = new VehicleService();
         final List<Vehicle> listOfVehicles = vehicleService.getListOfVehicles();
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
 
         req.setAttribute("vehicles", listOfVehicles);
+        req.setAttribute("username", user);
+
         req.getRequestDispatcher("/frontend/index.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        OperationService operationService = new OperationService();
-        VehicleService vehicleService = new VehicleService();
-        LoginService loginServce = new LoginService();
-
         String vehicleId = req.getParameter("id");
         String option = req.getParameter("option");
         final Vehicle vehicle = vehicleService.getVehicleById(Integer.parseInt(vehicleId));
         req.setAttribute("vehicle", vehicle);
 
         if ("rent".equals(option)) {
-
-            HttpSession session=req.getSession();
-            User user= (User) session.getAttribute("user");
-
-
+            HttpSession session = req.getSession();
+            User user = (User) session.getAttribute("user");
             String startdate = req.getParameter("startdate");
             String enddate = req.getParameter("enddate");
-
-
-
-
-
-
-
-            Operation operation = new Operation(user, vehicle,  startdate, enddate);
-
+            Operation operation = new Operation(user, vehicle, startdate, enddate);
             operationService.create(operation);
             req.getRequestDispatcher("/frontend/confirm.jsp").forward(req, resp);
-        }
-
-        else if ("confirm".equals(option))
-        {
+        } else if ("confirm".equals(option)) {
             req.getRequestDispatcher("/frontend/payment.jsp").forward(req, resp);
-        }
-
-        else if ("payment".equals(option))
-        {
+        } else if ("payment".equals(option)) {
             resp.sendRedirect("/rentals-pay/");
-        }
-
-
-
-        else {
-            //resp.sendRedirect("/rentals");
-
+        } else {
             req.getRequestDispatcher("/frontend/operation.jsp").forward(req, resp);
         }
-
     }
 }

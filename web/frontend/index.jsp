@@ -31,13 +31,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="/frontend/rentals.css"/>
-    <script src="rentals.js"></script>
+    <script src="/frontend/rentals-index.js"></script>
 </head>
 <body>
 
 <div class="header">
-    <a href="#default" class="logo">MUM Rentals</a>
+    <a href="#default" class="logo">MUM Fairfield Rentals</a>
     <div class="header-right">
+        <a href="#">User: ${user.email}</a>
         <a class="active" href="#home">Home</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
@@ -48,22 +49,58 @@
     <c:forEach items="${vehicles}" var="vehicle">
         <form action="/rentals" method="post">
             <input name="id" type="hidden" value="${vehicle.id}">
-            <article class="card"    >
+            <article class="card">
                 <header class="card__title">
                     <h3>Rent a Car</h3>
                 </header>
                 <figure class="card__thumbnail">
-                    <img style="border: 3px solid ${vehicle.color}" src="/images/${vehicle.image}.jpg" width="150" align="center" height="50">
+                    <img style="border: 3px solid ${vehicle.color}" src="/images/${vehicle.image}.jpg" width="150"
+                         align="center" height="50">
                 </figure>
                 <main class="card__description">
-                    Name: ${vehicle.name} <br/>
-
-                    Make: ${vehicle.mak} <br/>
-                    Color: ${vehicle.mak} <br/>
-                    Model: ${vehicle.model} <br/>
-                    Price: ${vehicle.price} <br/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                Name:
+                            </div>
+                            <div class="col-sm">
+                                    ${vehicle.name}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Make:
+                            </div>
+                            <div class="col-sm">
+                                    ${vehicle.mak}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Color:
+                            </div>
+                            <div class="col-sm">
+                                    ${vehicle.mak}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Model:
+                            </div>
+                            <div class="col-sm">
+                                    ${vehicle.model}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Price:
+                            </div>
+                            <div class="col-sm">
+                                ${vehicle.price}
+                            </div>
+                        </div>
+                    </div>
                 </main>
-                <!--a href="#" class="button">Book</a/-->
                 <input type="submit" class="button" value="Book">
             </article>
         </form>
