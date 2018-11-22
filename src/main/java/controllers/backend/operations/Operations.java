@@ -48,6 +48,7 @@ public class Operations extends HttpServlet {
             String startdate = req.getParameter("startdate");
             String enddate = req.getParameter("enddate");
             Operation operation = new Operation(user, vehicle, startdate, enddate);
+            req.setAttribute("operation", operation);
             operationService.create(operation);
             req.getRequestDispatcher("/frontend/confirm.jsp").forward(req, resp);
         } else if ("confirm".equals(option)) {

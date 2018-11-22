@@ -102,3 +102,12 @@ img {
     max-width: 100%;
 }
 
+.price {
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    font-family: "Bell MT";
+    border: 1px;
+    padding: 2px;
+    width: 300px;
+}
