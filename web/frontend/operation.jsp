@@ -32,7 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="/frontend/rentals.css"/>
     <script src="/frontend/moment-with-locales.js"></script>
-    <script src="/frontend/rentals-operation.js"></script>
+    <script src="/frontend/rentals-operation.js?v=1"></script>
 </head>
 <body>
 
@@ -102,7 +102,7 @@
                             Start Date:
                         </div>
                         <div class="col-sm">
-                            <input name="startdate" required type="date"/>
+                            <input name="startdate" required type="date" class="form-control"/>
                         </div>
                     </div>
                     <div class="row">
@@ -110,7 +110,7 @@
                             End Date:
                         </div>
                         <div class="col-sm">
-                            <input name="enddate" required type="date"/>
+                            <input name="enddate" required type="date" class="form-control"/>
                         </div>
                     </div>
                     <div class="row">
@@ -122,6 +122,12 @@
                     </div>
                 </div>
             </main>
+            <input type="button" class="button simulate" value="Simulate">
+            <div class="row">
+                <div class="col-sm">
+                    Precio: <span id="precio"></span>
+                </div>
+            </div>
             <input type="submit" class="button" value="Accept">
         </article>
     </form>

@@ -5,7 +5,7 @@ $(document).ready(function(){
         var start = moment($('[name=startdate]').val());
         var end = moment($('[name=enddate]').val());
 
-        if(start.isValid() && end.isValid() && end.isAfter(end)){
+        if(start.isValid() && end.isValid() && end.isAfter(start)){
             return true;
         }
 
@@ -41,20 +41,26 @@ $(document).ready(function(){
         }
     });
 
-    // $('[type=submit]').on('click', function(e){
-    //     e.preventDefault();
-    //     if(validate()){
-    //         $('[type=submit]').submit();
-    //     }
-    //     else {
-    //         showDateErrors();
-    //     }
-    // });
+     $('[type=submit]').on('click', function(e){
+         e.preventDefault();
+         if(validate()){
+             $('[type=submit]').submit();
+         }
+         else {
+             showDateErrors();
+         }
+     });
 
     $('.simulate').on('click', function(){
+        var inputData = {
+          id: $("[name=id]").val(),
+          enddate: $("[name=enddate]").val(),
+          startdate: $("[name=startdate]").val()
+        };
 
-        $.post('/JsonOperation', {id: JSON.stringify(form)}, function (data) {
-
+        $.post('/JsonOperation', inputData, function (data) {
+            console.log(data);
+            $("#precio").val(data.precio);
         });
     })
 });
