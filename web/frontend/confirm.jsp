@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
@@ -39,7 +40,9 @@
     <a href="#default" class="logo">MUM Rentals</a>
     <div class="header-right">
         <a class="active" href="/">Home</a>
-        <a href="/Logout">Logout</a>
+        <c:if test="${user.email!=null}">
+            <a href="/Logout">(${user.email}) Logout</a>
+        </c:if>
     </div>
 </div>
 
@@ -50,19 +53,89 @@
         <input name="option" type="hidden" value="confirm">
         <article class="card">
             <header class="card__title">
-                <h3>Rent a Car</h3>
+                <h3>Confirm Car Rental?</h3>
             </header>
             <figure class="card__thumbnail">
-                <img src="${vehicle.image}">
+                <img src="images/${vehicle.image}.jpg" width="150" align="center" height="50">
             </figure>
+
             <main class="card__description">
-                Name: ${vehicle.name} <br/>
-                Make: ${vehicle.mak} <br/>
-                Model: ${vehicle.model} <br/>
-                Price: ${vehicle.price} <br/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            Name:
+                        </div>
+                        <div class="col-sm">
+                            ${vehicle.name}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Make:
+                        </div>
+                        <div class="col-sm">
+                            ${vehicle.mak}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Color:
+                        </div>
+                        <div class="col-sm">
+                            ${vehicle.mak}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Model:
+                        </div>
+                        <div class="col-sm">
+                            ${vehicle.model}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Price per day:
+                        </div>
+                        <div class="col-sm">
+                            ${vehicle.price}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Start Date:
+                        </div>
+                        <div class="col-sm">
+                            <fmt:formatDate value="${operation.date_start}" pattern="MM-dd-yyyy" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            End Date:
+                        </div>
+                        <div class="col-sm">
+                            <fmt:formatDate value="${operation.date_end}" pattern="MM-dd-yyyy" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Total Price:
+                        </div>
+                        <div class="col-sm">
+                            ${operation.price}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="error-msg alert alert-danger d-none" role="alert">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
-            Confirm Rent<br/>
-            <input type="submit" class="button" value="Pay">
+
+            <input type="submit" class="button" value="Confirm">
         </article>
     </form>
 </section>

@@ -31,9 +31,10 @@
 <div class="header">
     <a href="#default" class="logo">MUM Rentals</a>
     <div class="header-right">
-        <a class="active" href="#home">Home</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href="/">Home</a>
+        <c:if test="${user.email!=null}">
+            <a href="/Logout">(${user.email}) Logout</a>
+        </c:if>
     </div>
 </div>
 
@@ -41,7 +42,7 @@
     <form action="/rentals" method="post">
         <input name="id" type="hidden" value="${vehicle.id}">
         <input name="option" type="hidden" value="payment">
-            <h1>Succesfull </h1>
+            <h1>Succesful </h1>
             <input type="submit" class="button" value="Back">
         </article>
     </form>

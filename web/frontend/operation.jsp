@@ -32,7 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="/frontend/rentals.css"/>
     <script src="/frontend/moment-with-locales.js"></script>
-    <script src="/frontend/rentals-operation.js?v=1"></script>
+    <script src="/frontend/rentals-operation.js"></script>
 </head>
 <body>
 
@@ -40,12 +40,14 @@
     <a href="#default" class="logo">MUM Rentals</a>
     <div class="header-right">
         <a class="active" href="/">Home</a>
-        <a href="/Logout">Logout</a>
+        <c:if test="${user.email!=null}">
+            <a href="/Logout">(${user.email}) Logout</a>
+        </c:if>
     </div>
 </div>
 
 <section class="card-container">
-    <form action="/rentals" method="post">
+    <form id="operation" action="/rentals" method="post">
         <input name="id" type="hidden" value="${vehicle.id}">
         <input name="option" type="hidden" value="rent">
         <article class="card">
@@ -125,7 +127,8 @@
             <input type="button" class="button simulate" value="Simulate">
             <div class="row">
                 <div class="col-sm">
-                    Precio: <span id="precio"></span>
+                    <div id="loading"></div>
+                    We offer this price: <span id="price" class="price"></span>
                 </div>
             </div>
             <input type="submit" class="button" value="Accept">
